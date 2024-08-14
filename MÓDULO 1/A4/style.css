@@ -1,0 +1,21 @@
+body{
+    background-color: black;
+}
+
+.Principal{
+    display: flex;
+    flex-direction: row;
+    padding: 50px;
+    justify-content: center;
+}
+
+#Vertical,#Horizontal{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding: 10px;
+}
+
+#Horizontal{
+    flex-direction: row;
+}

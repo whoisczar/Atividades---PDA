@@ -1,0 +1,17 @@
+
+/*Padrão css reset*/
+*{
+    margin: 0;
+    padding: 0  ;
+    box-sizing: border-box;
+}
+
+
+#indice{
+    height: 200px;  
+    background-color: chartreuse;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center; /*Alinha o conteúdo ao centro na vertical*/
+}

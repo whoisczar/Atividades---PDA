@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meow🐱</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://cataas.com" />
+
+  </head>
+
+  <body>
+    <header>
+      <h1>Um novo gato a cada clique!</h1>
+      <button id="gerar-botao">Gerar</button>
+    </header>
+
+    <div>
+      <img id="gato" src="https://cataas.com/cat" alt="cat" height="400px">
+    </div>
+
+    <div id="progress-container">
+      <progress id="progress" value="0" max="100"></progress>
+    </div>
+
+    <footer>
+      <p>Criado por Gabriel Reis</p>
+    </footer>
+
+    <script>
+      document.getElementById('gerar-botao').addEventListener('click', function () {
+        const button = this;
+        button.disabled = true; // Desativa o botão enquanto carrega a imagem
+        button.textContent = "🐱"; // Altera o texto do botão para o emoji de gato
+
+        const audio = new Audio("meow.mp3");
+        audio.play();
+
+        const progress = document.getElementById('progress');
+        progress.value = 0; // Reseta o progresso
+
+        const img = document.getElementById('gato');
+        const newSrc = "https://cataas.com/cat?" + new Date().getTime();
+
+        // Cria uma nova requisição XMLHttpRequest para atualizar a imagem
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', newSrc, true);
+        xhr.responseType = 'blob';
+        xhr.onprogress = function (event) {
+          if (event.lengthComputable) {
+            progress.value = (event.loaded / event.total) * 100;
+          }
+        };
+        xhr.onload = function () {
+          if (xhr.status === 200) {
+            // Quando a imagem estiver completamente carregada, atualiza o src
+            const blob = new Blob([xhr.response], { type: 'image/jpeg' });
+            const url = URL.createObjectURL(blob);
+            img.src = url;
+          }
+          button.disabled = false; // Reativa o botão quando o carregamento termina
+          button.textContent = "Gerar"; // Restaura o texto original do botão
+        };
+        xhr.send();
+      });
+    </script>
+  </body>
+</html>
