@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id = "TimerDiv">
+        <h1>Olá! <br>Insira quantos segundos você quer o timer</h1>
+        <input id="InputTempo" type="number" min="0" max="9999" placeholder="Segundos">
+        <button onclick="cliquei()" id="botaoClick">Clique aqui</button>
+        <button  onclick="resetar()" style="display: none" id="botaoResetar">resetar</button>
+        <h4 id="timer">0</h4>
+    </div>
+</body>
+</html>
